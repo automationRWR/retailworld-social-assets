@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css">
+<style>
+#sun{position:absolute;left:290px;width:500px;height:500px;border-radius:50%;background:#fff;z-index:2}
+#ground{position:absolute;left:0;right:0;top:1480px;bottom:0;background:#F27C10;z-index:3;border-top:4px solid #fff}
+.ray{position:absolute;left:0;right:0;height:4px;background:#fff;z-index:4}
+</style></head><body>
+<section class="sc orange" id="s1"><img class="logo" src="a/logo_white.png">
+  <div id="sun"></div><div id="ground"></div>
+  <div class="ray" id="ry1" style="top:1650px;left:200px;right:200px"></div>
+  <div class="ray" id="ry2" style="top:1730px;left:320px;right:320px"></div>
+  <div class="ray" id="ry3" style="top:1810px;left:430px;right:430px"></div>
+  <svg id="wv" width="1080" height="1920" style="position:absolute;left:0;top:0;z-index:5"><defs id="defs"></defs><g id="txt" font-family="Poppins" text-anchor="middle" fill="#fff"></g></svg>
+  <div class="t lbl" style="top:1530px;z-index:6;font-size:44px" id="sig" data-text="Retailworld. [b]We get it."></div>
+</section>
+<script>window.NO_CIRCLES = true;</script>
+<script src="lib.js"></script>
+<script>
+window.DURATION = 9;
+const LINES = [['First in my', 300, 72], ['bloodline to', 600, 120], ['survive a', 300, 72], ['Boxing Day', 700, 150], ['stocktake.', 700, 150]];
+const Y = [430, 560, 700, 840, 1010];
+function setup() {
+  circles($('#s1'), [[920,330,300,'ring:#FFFFFF',.5,60,0],[960,1250,90,'#FFFFFF',1,40,1],[120,1180,120,'ring:#FFFFFF',.9,40,2],[150,1250,220,'#F58A28',.4,50,3]]);
+  $('#sig').innerHTML = 'Retailworld. <b style="font-weight:600">We get it.</b>';
+  LINES.forEach((l, i) => {
+    $('#defs').insertAdjacentHTML('beforeend', `<path id="w${i}"/>`);
+    $('#txt').insertAdjacentHTML('beforeend', `<text font-weight="${l[1]}" font-size="${l[2]}" ${l[1] === 300 ? 'font-style="italic"' : ''} id="tx${i}"><textPath href="#w${i}" startOffset="50%">${l[0]}</textPath></text>`);
+  });
+}
+function wave(y, t, i, amp) {
+  let d = ''; for (let x = -100; x <= 1180; x += 20) { const yy = y + amp * Math.sin(x / 170 + t * 2.4 + i * .9); d += (d ? 'L' : 'M') + x + ',' + yy.toFixed(1); } return d;
+}
+function render(t) {
+  moveCircles($('#s1'), t);
+  scene($('#s1'), t, 0, 9);
+  const sr = E.o5(P(t, 0, 2.4));
+  $('#sun').style.top = (1600 - sr * 420) + 'px';
+  LINES.forEach((l, i) => {
+    $('#w' + i).setAttribute('d', wave(Y[i], t, i, 26));
+    const p = P(t, .5 + i * .45, .7), k = E.o5(p);
+    const tx = $('#tx' + i); tx.style.opacity = k; tx.style.transform = `translateY(${(1 - k) * 60}px)`;
+  });
+  ['#ry1','#ry2','#ry3'].forEach((id, i) => { $(id).style.transform = `scaleX(${E.o5(P(t, 1 + i * .2, 1))})`; });
+  words($('#sig'), t, 3.8, { type: 'blur' });
+  $('#sig').style.opacity = cl(P(t, 3.8, .5));
+}
+</script></body></html>

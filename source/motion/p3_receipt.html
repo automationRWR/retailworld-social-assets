@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="post.css">
+<style>
+#till{position:absolute;left:150px;top:270px;width:780px;height:78px;border-radius:39px;background:#fff;z-index:6;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+#till i{position:absolute;left:60px;right:60px;top:32px;height:14px;border-radius:7px;background:#1D1D1F}
+#mask{position:absolute;left:0;right:0;top:310px;bottom:0;overflow:hidden;z-index:5}
+#rv{position:absolute;left:220px;width:640px;top:0;overflow:hidden}
+#rc{position:relative;width:640px;background:#fff;color:#1D1D1F;padding:70px 54px 90px;box-shadow:0 30px 70px rgba(0,0,0,.15)}
+.dash{border-top:4px dashed #E5E5EA;margin:24px 0}
+.row{display:flex;justify-content:space-between;font-size:29px;font-weight:500;line-height:1.95}
+.row b{color:#F27C10;font-weight:700}
+.tot{display:flex;justify-content:space-between;align-items:baseline;font-size:34px;font-weight:700}
+#stamp{position:absolute;right:40px;bottom:46px;border:7px solid #F27C10;color:#F27C10;border-radius:22px;padding:6px 26px;font-size:54px;font-weight:700;letter-spacing:.06em;transform-origin:50% 50%}
+</style></head><body>
+<section class="sc orange" id="s" style="display:block">
+  <div class="t" style="top:150px;font-size:66px;font-weight:600;letter-spacing:-0.01em">Checkout complete.</div>
+  <div id="till"><i></i></div>
+  <div id="mask"><div id="rv"><div id="rc">
+    <div style="text-align:center"><img src="a/logo.png" style="width:220px"></div>
+    <div style="text-align:center;font-size:22px;color:#6E6E73;margin-top:10px">Store: Retailworld · AU &amp; NZ</div>
+    <div class="dash"></div>
+    <div class="row"><span>1x New role</span><b>✓</b></div>
+    <div class="row"><span>1x Better roster</span><b>✓</b></div>
+    <div class="row"><span>1x Team that shows up</span><b>✓</b></div>
+    <div class="row"><span>1x Recruiter in your corner</span><b>✓</b></div>
+    <div class="dash"></div>
+    <div class="tot"><span>TOTAL</span><span style="color:#F27C10">A new career</span></div>
+    <div class="dash"></div>
+    <div style="text-align:center;font-size:24px;font-weight:300">Thanks for shopping with us.</div>
+    <svg width="532" height="70" style="display:block;margin:26px auto 0" id="bc"></svg>
+    <div id="stamp">BOOKED</div>
+  </div></div></div>
+</section>
+<script src="lib.js"></script><script src="post.js"></script>
+<script>
+window.DURATION = 8;
+function setup() {
+  
+  let x = 40, bars = ''; let seed = 7;
+  while (x < 492) { seed = (seed * 9301 + 49297) % 233280; const w = 3 + (seed % 4) * 3; bars += `<rect x="${x}" y="0" width="${w}" height="70" fill="#1D1D1F"/>`; x += w + 4 + (seed % 3) * 2; }
+  $('#bc').innerHTML = bars;
+  const rc = $('#rc'), h = rc.offsetHeight; window._H = h;
+  let pts = []; const n = 24; for (let i = 0; i <= n; i++) { pts.push(`${i / n * 100}% ${i % 2 ? 100 : 100 - 2.6}%`); }
+  rc.style.clipPath = `polygon(0 0, 100% 0, ${pts.reverse().join(', ')})`;
+}
+function render(t) {
+  moveLoop($('#s'), t);
+  const H = window._H; let y = 0, rot = 0, op = 1;
+  if (t < 2) { y = 0; }
+  else if (t < 2.7) { const k = E.io(P(t, 2, .7)); y = k * 1100; rot = k * 10; op = 1 - k * .3; }
+  else if (t < 6.8) { y = 0; }
+  else y = 0;
+  const rv = $('#rv'); let reveal = H;
+  if (t >= 2.7 && t < 6.8) { reveal = Math.floor(P(t, 2.7, 4.1) * 40) / 40 * H; y = 0; }
+  rv.style.height = Math.max(1, reveal) + 'px'; rv.style.transform = `translateY(${y}px) rotate(${rot}deg)`; rv.style.opacity = op;
+  $('#rc').style.transform = '';
+  const st = $('#stamp'); const sp = t >= 6.85 ? P(t, 6.85, .45) : (t < 2.7 ? 1 : 0);
+  st.style.opacity = cl(sp * 3); st.style.transform = `rotate(-12deg) scale(${t >= 6.85 ? 2.2 - 1.2 * E.o5(sp) : 1})`;
+  $('#till').style.transform = (t > 2.7 && t < 6.8) ? `translateX(${2 * Math.sin(t * 90)}px)` : '';
+}
+</script></body></html>

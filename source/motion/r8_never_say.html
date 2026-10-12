@@ -1,0 +1,54 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css">
+<style>
+.l64{font-size:64px;font-weight:300}
+.b200{font-size:200px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+.b160{font-size:160px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+.strike{position:absolute;left:70px;right:70px;height:26px;border-radius:13px;transform-origin:0 50%;z-index:7}
+.sc.white .strike{background:#F27C10}
+.sc.orange .strike{background:#fff}
+.q{font-size:56px;font-weight:300;font-style:italic}
+</style></head><body>
+<section class="sc white" id="s0"><img class="logo" src="a/logo.png">
+  <div class="t" style="top:560px" id="t0a" data-text="[l64]Things retail managers"></div>
+  <div class="t" style="top:680px" id="t0" data-text="[b200]never|[b200 or]say."></div>
+</section>
+<section class="sc orange" id="s1"><img class="logo" src="a/logo_white.png"><div class="t q" style="top:520px" id="q1" data-text="exhibit A"></div><div class="t" style="top:680px" id="t1" data-text="[b160]I love|[b160]stocktake."></div><div class="strike" id="k1" style="top:850px"></div></section>
+<section class="sc white" id="s2"><img class="logo" src="a/logo.png"><div class="t q" style="top:520px" id="q2" data-text="exhibit B"></div><div class="t" style="top:680px" id="t2" data-text="[b160]Boxing Day?|[b160 or]Can't wait."></div><div class="strike" id="k2" style="top:850px"></div></section>
+<section class="sc orange" id="s3"><img class="logo" src="a/logo_white.png"><div class="t q" style="top:520px" id="q3" data-text="exhibit C"></div><div class="t" style="top:680px" id="t3" data-text="[b160]Rosters are|[b160]so easy."></div><div class="strike" id="k3" style="top:850px"></div></section>
+<section class="sc white" id="s4"><img class="logo" src="a/logo.png"><div class="t q" style="top:520px" id="q4" data-text="exhibit D"></div><div class="t" style="top:680px" id="t4" data-text="[b160]Nobody called|[b160 or]in sick."></div><div class="strike" id="k4" style="top:850px"></div></section>
+<section class="sc orange" id="s5"><img class="logo" src="a/logo_white.png">
+  <div class="t" style="top:470px" id="t5a" data-text="[l64]And one thing we|[l64]never say:"></div>
+  <div class="t" style="top:700px" id="t5" data-text="[b160]“No roles|[b160]for you.”"></div>
+  <div class="strike" id="k5" style="top:870px"></div>
+  <div class="pill" id="cta" style="top:1320px">Link in bio.</div>
+</section>
+<script src="lib.js"></script>
+<script>
+window.DURATION = 15;
+const WC = [[960,330,300,'#F27C10',.55,60,0],[150,1560,560,'#F5F5F7',.35,80,1],[960,1640,190,'ring:#F27C10',.8,50,2],[130,420,96,'#F27C10',1,40,3]];
+const OC = [[930,330,380,'ring:#FFFFFF',.5,60,0],[120,1600,600,'#F58A28',.35,70,1],[980,1560,150,'#FFFFFF',.9,40,2],[110,520,90,'ring:#FFFFFF',1.1,40,3]];
+function setup() { ['#s0','#s2','#s4'].forEach(s => circles($(s), WC)); ['#s1','#s3','#s5'].forEach(s => circles($(s), OC)); }
+const T = [0, 2.8, 4.9, 7.0, 9.1, 11.2];
+const ORG = [[540,960],[900,1700],[150,300],[950,400],[150,1700],[540,960]];
+function render(t) {
+  $$('.sc').forEach(s => moveCircles(s, t));
+  if (scene($('#s0'), t, 0, T[1] + .8)) { words($('#t0a'), t, .2, { st: .05 }); words($('#t0'), t, .5, { type: 'drop', st: .15, d: .9 }); }
+  for (let i = 1; i <= 4; i++) {
+    const s = T[i], e = (T[i + 1] || 15) + .8;
+    if (scene($('#s' + i), t, s, e, { x: ORG[i][0], y: ORG[i][1], d: .6 })) {
+      words($('#q' + i), t, s + .25, { type: 'blur' });
+      words($('#t' + i), t, s + .35, { type: 'pop', st: .1 });
+      const k = E.o5(P(t, s + 1.1, .45));
+      $('#k' + i).style.transform = `rotate(-5deg) scaleX(${k})`;
+      const sh = P(t, s + 1.1, .5) < 1 && t > s + 1.1 ? Math.sin(t * 70) * 10 * (1 - P(t, s + 1.1, .5)) : 0;
+      $('#t' + i).style.transform = `translateX(${sh}px)`;
+    }
+  }
+  if (scene($('#s5'), t, T[5], 15, { x: 540, y: 960 })) {
+    words($('#t5a'), t, T[5] + .3, { st: .06 });
+    words($('#t5'), t, T[5] + .8, { type: 'pop', st: .1 });
+    $('#k5').style.transform = `rotate(-5deg) scaleX(${E.o5(P(t, T[5] + 1.7, .45))})`;
+    pop($('#cta'), t, T[5] + 2.3, { base: 'translateX(-50%)' });
+  }
+}
+</script></body></html>

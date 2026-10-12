@@ -1,0 +1,92 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css">
+<style>
+.m92{font-size:92px;font-weight:500;letter-spacing:-0.01em}
+.b200{font-size:200px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+.b170{font-size:170px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+.it{font-size:210px;font-weight:300;font-style:italic;letter-spacing:-0.01em}
+.tag{position:absolute;left:50%;top:560px;transform:translateX(-50%);background:#F27C10;color:#fff;font-weight:600;font-size:40px;padding:14px 40px;border-radius:999px;z-index:6}
+.screen{position:absolute;inset:0;background:#F5F5F7}
+.ntf{position:absolute;left:24px;right:24px;background:#fff;border-radius:34px;padding:24px 26px;display:flex;gap:20px;align-items:center;box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.ntf .ic{width:86px;height:86px;flex-shrink:0;border-radius:22px;background:#F27C10;display:flex;align-items:center;justify-content:center}
+.ntf .ic img{width:62px}
+.ntf .h{display:flex;justify-content:space-between;font-size:24px;font-weight:600}
+.ntf .h span{font-weight:400;color:#6E6E73}
+.ntf .b{font-size:27px;font-weight:500;line-height:1.25;margin-top:2px}
+.ntf .s{font-size:23px;font-weight:400;color:#6E6E73}
+.num{position:absolute;left:0;right:0;top:420px;text-align:center;font-size:560px;font-weight:700;color:#F27C10;line-height:1;z-index:5}
+.day{position:absolute;top:1430px;width:270px;height:200px;border-radius:40px;background:#fff;box-shadow:0 26px 60px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:6}
+.day .d{font-size:30px;font-weight:600;color:#F27C10;letter-spacing:.06em}
+.day .h{font-size:52px;font-weight:600}
+.day .tick{position:absolute;right:-14px;top:-14px;width:56px;height:56px;border-radius:50%;background:#1D1D1F;color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center}
+</style></head><body>
+<section class="sc white" id="s1"><img class="logo" src="a/logo.png">
+  <div class="tag" id="pov">POV</div>
+  <div class="t" style="top:700px" id="t1" data-text="[m92]You said you're|[b200 or]just|[b200 or]looking."></div>
+  <div class="t lbl" style="top:1330px" id="t1b" data-text="to your recruiter, probably."></div>
+</section>
+<section class="sc orange" id="s2"><img class="logo" src="a/logo_white.png">
+  <div class="t lbl" style="top:300px;font-size:44px" id="t2" data-text="Four minutes later."></div>
+  <div class="phone" id="ph" style="left:240px;top:420px"><div class="screen"></div><div class="notch"></div><div class="time">9:41</div>
+    <div style="position:absolute;left:0;right:0;top:120px;text-align:center;font-size:30px;font-weight:600;color:#6E6E73">Notifications</div>
+    <div class="ntf" id="n1" style="top:190px"><div class="ic"><img src="a/logo_white.png"></div><div style="flex:1"><div class="h">Retailworld<span>now</span></div><div class="b">New role: Store Manager</div><div class="s">Fashion retail. Matches you.</div></div></div>
+    <div class="ntf" id="n2" style="top:380px"><div class="ic"><img src="a/logo_white.png"></div><div style="flex:1"><div class="h">Retailworld<span>now</span></div><div class="b">New role: Area Manager</div><div class="s">Multi-site. Interview Wednesday?</div></div></div>
+    <div class="ntf" id="n3" style="top:570px"><div class="ic"><img src="a/logo_white.png"></div><div style="flex:1"><div class="h">Retailworld<span>now</span></div><div class="b">New role: Head Office Buyer</div><div class="s">Homewares. They want to meet you.</div></div></div>
+    <div class="ntf" id="n4" style="top:760px"><div class="ic"><img src="a/logo_white.png"></div><div style="flex:1"><div class="h">Retailworld<span>now</span></div><div class="b">You've got 3 interviews</div><div class="s">Tap to see your week.</div></div></div>
+  </div>
+</section>
+<section class="sc white" id="s3"><img class="logo" src="a/logo.png">
+  <div class="t lbl" style="top:330px;font-size:44px" id="t3" data-text="By Friday."></div>
+  <div class="num" id="num">1</div>
+  <div class="t" style="top:1060px;font-size:140px;font-weight:600;letter-spacing:-0.02em" id="t3b" data-text="interviews."></div>
+  <div class="day" id="d1" style="left:90px"><div class="d">MON</div><div class="h">10am</div><div class="tick">✓</div></div>
+  <div class="day" id="d2" style="left:405px"><div class="d">WED</div><div class="h">2pm</div><div class="tick">✓</div></div>
+  <div class="day" id="d3" style="left:720px"><div class="d">FRI</div><div class="h">9am</div><div class="tick">✓</div></div>
+</section>
+<section class="sc orange" id="s4"><img class="logo" src="a/logo_white.png">
+  <div class="t" style="top:560px" id="t4" data-text="[b170]Just|[b170]looking?"></div>
+  <div class="t" style="top:960px" id="t4b" data-text="[it]Same."></div>
+  <div class="pill" id="cta" style="top:1400px">Link in bio.</div>
+</section>
+<script src="lib.js"></script>
+<script>
+window.DURATION = 15;
+function setup() {
+  circles($('#s1'), [[870,470,320,'#F27C10',.55,60,0],[150,1560,560,'#F5F5F7',.35,80,1],[960,1640,190,'ring:#F27C10',.8,50,2],[130,420,96,'#F27C10',1,40,3],[760,1300,64,'ring:#1D1D1F',1.2,30,1]]);
+  circles($('#s2'), [[930,330,380,'ring:#FFFFFF',.5,60,0],[120,1600,600,'#F58A28',.35,70,1],[980,1560,150,'#FFFFFF',.9,40,2],[110,520,90,'ring:#FFFFFF',1.1,40,3]]);
+  circles($('#s3'), [[140,360,240,'ring:#F27C10',.6,50,1],[960,1180,420,'#F5F5F7',.4,70,2],[930,300,90,'#F27C10',1,40,0],[120,1250,70,'ring:#1D1D1F',1.3,30,2]]);
+  circles($('#s4'), [[880,480,340,'#F58A28',.5,60,0],[160,1500,460,'ring:#FFFFFF',.4,70,1],[960,1700,120,'#FFFFFF',.9,40,2],[150,380,80,'#FFFFFF',1.2,40,3]]);
+}
+function render(t) {
+  $$('.sc').forEach(s => moveCircles(s, t));
+  if (scene($('#s1'), t, 0, 4.2)) {
+    pop($('#pov'), t, .15, { base: 'translateX(-50%)' });
+    words($('#t1'), t, .35, { st: .1 });
+    words($('#t1b'), t, 1.5, { type: 'blur', st: .05 });
+  }
+  if (scene($('#s2'), t, 3.5, 8.9, { x: 900, y: 1650 })) {
+    const l = t - 3.5;
+    words($('#t2'), t, 3.9, { st: .06 });
+    const k = E.o5(P(t, 3.8, 1));
+    $('#ph').style.transform = `translateY(${(1 - k) * 1300 + Math.sin(l * 1.6) * 12}px) rotate(${(1 - k) * -10 + Math.sin(l * 1.1) * 1.2}deg)`;
+    ['#n1','#n2','#n3','#n4'].forEach((id, i) => {
+      const p = P(t, 4.7 + i * .7, .7), kk = E.back(p);
+      $(id).style.opacity = cl(p * 3);
+      $(id).style.transform = `translateY(${(1 - kk) * -120}px) scale(${.85 + .15 * kk})`;
+    });
+  }
+  if (scene($('#s3'), t, 8.4, 12.1, { x: 150, y: 250 })) {
+    words($('#t3'), t, 8.8, { st: .06 });
+    const n = 1 + Math.min(2, Math.floor(P(t, 9.0, 1.2) * 3));
+    $('#num').textContent = n;
+    const ph = ((t - 9.0) % .4) / .4, k = t < 9.0 ? E.back(P(t, 8.7, .5)) : (t < 10.4 ? 1 + .12 * Math.sin(ph * Math.PI) : 1);
+    $('#num').style.transform = `scale(${k})`; $('#num').style.opacity = cl(P(t, 8.7, .3));
+    words($('#t3b'), t, 9.4, { type: 'pop' });
+    ['#d1','#d2','#d3'].forEach((id, i) => { pop($(id), t, 9.2 + i * .4); const tk = $(id).querySelector('.tick'); tk.style.transform = `scale(${E.back(P(t, 9.6 + i * .4, .4))})`; });
+  }
+  if (scene($('#s4'), t, 11.6, 15, { x: 540, y: 960 })) {
+    words($('#t4'), t, 12.0, { type: 'drop', st: .12, d: .9 });
+    words($('#t4b'), t, 12.9, { type: 'blur', d: .7 });
+    pop($('#cta'), t, 13.5, { base: 'translateX(-50%)' });
+  }
+}
+</script></body></html>

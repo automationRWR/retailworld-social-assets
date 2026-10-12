@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="mm.css">
+<style>
+html,body{width:6480px;height:1350px}
+.row{display:flex;width:6480px;height:1350px}
+.sl{position:relative;width:1080px;height:1350px;overflow:hidden;flex-shrink:0}
+.sl.o{background:#F27C10;color:#fff}.sl.w{background:#fff;color:#1D1D1F}
+.lg{position:absolute;left:50%;top:70px;width:190px;transform:translateX(-50%)}
+.num{position:absolute;left:110px;top:260px;font-size:44px;font-weight:600;letter-spacing:.06em}
+.big{position:absolute;left:110px;right:110px;top:330px;font-size:140px;font-weight:700;letter-spacing:-0.03em;line-height:1}
+.sub{position:absolute;left:110px;right:160px;top:660px;font-size:46px;font-weight:300;line-height:1.35}
+.cardw .item{font-size:40px;padding:20px 0}
+.cardw .chk{width:56px;height:56px}
+.sw{position:absolute;left:0;right:0;bottom:70px;text-align:center;font-size:32px;font-weight:300}
+.mini{position:absolute;left:110px;right:110px;bottom:150px;background:#fff;color:#1D1D1F;border-radius:40px;padding:30px 38px;display:flex;align-items:center;gap:26px;box-shadow:0 26px 60px rgba(0,0,0,.12);font-size:42px;font-weight:600}
+</style></head><body><div class="row"></div>
+<script src="lib.js"></script>
+<script>
+window.DURATION=1;window.SLIDES=6;
+const ITEMS=['Coffee first','Set one big goal','Hype up your team','Back yourself'];
+const TICK='<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+function list(n){return ITEMS.map((t,i)=>`<div class="item ${i<n?'done':''}" ${i===3?'style="border-bottom:none"':''}><div class="chk ${i<n?'on':'off'}">${i<n?TICK:''}</div><span>${t}</span></div>`).join('');}
+function card(n,top){return `<div class="cardw" style="left:110px;right:110px;top:${top}px;padding:36px 50px 20px"><div style="display:flex;justify-content:space-between;font-size:28px;font-weight:500;color:#F27C10"><span>‹ Reminders</span><span>${n}/4</span></div><div style="font-size:54px;font-weight:700;margin:20px 0 4px">Monday</div>${list(n)}</div>`;}
+const STEPS=[
+ ['01','Coffee first.','Non-negotiable. Everything else can wait five minutes.'],
+ ['02','Set one big goal.','Not ten. One. Write it at the top of the roster.'],
+ ['03','Hype up your team.','Energy is contagious. Be the one who starts it.'],
+ ['04','Back yourself.','You have handled harder Mondays than this one.']];
+function setup(){
+  let h=`<div class="sl w"><img class="lg" src="a/logo.png"><div class="eyebrow">Monday motivation</div><div class="title" style="top:230px;font-size:120px">Your Monday<br><span style="color:#F27C10">checklist.</span></div>${card(0,560)}<div class="sw">Swipe to tick them off →</div></div>`;
+  STEPS.forEach((s,i)=>{const o=i%2===0;h+=`<div class="sl ${o?'o':'w'}"><div class="num" style="color:${o?'#fff':'#F27C10'}">${s[0]} / 04</div><div class="big">${s[1]}</div><div class="sub">${s[2]}</div><div class="mini"><div class="chk on">${TICK}</div>${ITEMS[i]}<span style="margin-left:auto;font-size:28px;font-weight:500;color:#6E6E73">${i+1}/4 done</span></div></div>`;});
+  h+=`<div class="sl w"><img class="lg" src="a/logo.png"><div class="title" style="top:230px;font-size:140px">All done.</div><div class="title" style="top:390px;font-size:52px;font-weight:300;letter-spacing:0">Now go have a big week.</div>${card(4,560)}<div class="sw">From the Retailworld crew.</div></div>`;
+  $('.row').innerHTML=h;
+}
+function render(){}
+</script></body></html>
