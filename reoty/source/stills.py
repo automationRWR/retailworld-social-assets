@@ -154,7 +154,7 @@ def c4():
 
 # ---------------------------------------------------------------- posts
 SAMPLE = '<div style="position:absolute;right:84px;top:84px;font-size:22px;font-weight:700;letter-spacing:.12em;border:3px dashed currentColor;border-radius:999px;padding:8px 20px;opacity:.75">SAMPLE TEXT</div>'
-def quote_post(ground, name, who="[Role], Travelex", lines=("The quote", "goes here."), placing="Winner", sample=True):
+def quote_post(ground, name, who="[Role], Travelex", lines=("The quote", "goes here."), placing="Winner", sample=True, support=""):
     cls, bg, logo, kick, num, soft = ctx(ground)
     badge = ("badge-reversed" if ground != "cream" else "badge") if placing == "Winner" else "badge-runner"
     q = "".join(f'<div data-fit="920" data-lines="1">{l}</div>' for l in lines[:-1]) + f'<div data-fit="920" data-lines="2" style="margin-top:.05em">{HL(lines[-1], cls="namehl")}</div>'
@@ -162,7 +162,10 @@ def quote_post(ground, name, who="[Role], Travelex", lines=("The quote", "goes h
 {SAMPLE if sample else ''}
 <div class="kick" style="position:absolute;left:90px;top:250px;font-size:24px;color:{kick}">In their words</div>
 <div style="position:absolute;left:76px;top:250px;font-size:330px;font-weight:700;color:var(--lilac);line-height:1">&ldquo;</div>
-<div class="disp" style="position:absolute;left:84px;top:520px;width:920px;font-size:120px">{q}</div>
+<div style="position:absolute;left:84px;top:500px;width:920px">
+  <div class="disp" style="font-size:120px">{q}</div>
+  {f'<div style="margin-top:40px;font-size:34px;font-weight:500;line-height:1.35;max-width:820px">{support}</div>' if support else ''}
+</div>
 <div style="position:absolute;left:84px;bottom:96px;width:560px">
   <div style="font-size:34px;font-weight:700">{who}</div>
   <div style="font-size:26px;margin-top:8px;color:{soft}">{placing}, Retail Employer of the Year 2026</div>

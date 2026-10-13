@@ -109,8 +109,8 @@ def r2():
 # ---------------------------------------------------------------- R3 quote reel, template
 def r3(quote_lines=("The quote", "goes here."), support="Short, specific and in their own words.",
        who="[Role], Travelex", name="R3-in-their-words-TEMPLATE", placing="Winner", sample=True):
-    q = "".join(f'<div class="line">{words_rise(l, .55 + i*.22, .09)}</div>' for i, l in enumerate(quote_lines[:-1]))
-    q += f'<div style="margin-top:.05em">{hl(quote_lines[-1], .55 + (len(quote_lines)-1)*.22 + .1)}</div>'
+    q = "".join(fl(l, .55 + i*.22, .09) for i, l in enumerate(quote_lines[:-1]))
+    q += fhl(quote_lines[-1], .55 + (len(quote_lines)-1)*.22 + .1)
     badge = "badge" if placing == "Winner" else "badge-runner"
     tag = ('<div style="position:absolute;right:84px;top:250px;font-size:26px;font-weight:700;letter-spacing:.12em;'
            'color:var(--muted);border:3px dashed var(--muted);border-radius:999px;padding:10px 24px">SAMPLE TEXT</div>') if sample else ""
@@ -119,11 +119,11 @@ def r3(quote_lines=("The quote", "goes here."), support="Short, specific and in 
 <div class="kick" style="position:absolute;left:90px;top:380px;font-size:34px;color:var(--purple);{an('pop', .1, .45, 'var(--bounce)')}">In their words</div>
 <div style="position:absolute;left:76px;top:400px;font-size:380px;font-weight:700;color:var(--lilac);line-height:1;{an('pop', .25, .6, 'var(--bounce)')}">&ldquo;</div>
 <div style="position:absolute;left:84px;top:700px;width:920px">
-  <div class="disp" style="font-size:150px" data-fit="920" data-lines="6">{q}</div>
-  <div style="margin-top:64px;font-size:44px;font-weight:500;line-height:1.3;max-width:600px;{an('fadeup', 1.6, .6)}">{support}</div>
+  <div class="disp" style="font-size:150px">{q}</div>
+  <div style="margin-top:64px;font-size:44px;font-weight:500;line-height:1.3;max-width:860px;{an('fadeup', 1.6, .6)}">{support}</div>
   <div style="margin-top:30px;font-size:40px;font-weight:700;color:var(--purple);{an('fadeup', 1.9, .6)}">{who}</div>
 </div>
-<img src="{A}{badge}.png" style="position:absolute;right:100px;top:1180px;width:300px;--rot:10deg;{an('stamp', 2.2, .55, 'ease-out')}">
+<img src="{A}{badge}.png" style="position:absolute;right:90px;top:300px;width:240px;--rot:10deg;{an('stamp', 2.2, .55, 'ease-out')}">
 """, "cream", ground=CREAM, ground_anim=False)]
     sc.append(end_card(7.2, 3.2, ["No judges.", "No panel.", "Just votes."], "Retail Employer of the Year 2026. Decided by the people who actually work there."))
     return dict(kind="video", name=name, body="".join(sc), w=W, h=H, dur=10.4, bg=PURPLE, css=EXTRA)
