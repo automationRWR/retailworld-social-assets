@@ -1,0 +1,244 @@
+{
+ "about": "Google reviews already seen or posted for Retailworld. A review whose fingerprint (first 40 chars of its text, lowercased, letters/digits/spaces only) is not listed for its office is new. Seeded 13 Oct 2026 with every review showing at that date, so none of those get posted.",
+ "fingerprint_rule": "re.sub(r'[^a-z0-9 ]','',text.lower().replace('\\n',' '))[:40].strip()",
+ "offices": [
+  {
+   "office": "Sydney",
+   "place_id": "ChIJ045LUUKvEmsR18AA-5fUrxc",
+   "places_query": "Retailworld Resourcing Sydney Level 7 44 Market St",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "working with samantha has been an incred",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "seriously one of the best organisations",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i quit my job a week before christmas an",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "samantha has provided exceptional assist",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i dont even know where to begin samantha",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "Melbourne",
+   "place_id": "ChIJgYqXRbRC1moRL1LfFTosJiA",
+   "places_query": "Retailworld Resourcing Melbourne 447 Collins Street",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "i had the pleasure of working with enola",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "retailworld were fantastic the way they",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i had the privilege of working with cait",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "thank you to both caitlin  alex on the a",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i had an amazing experience with this ag",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "Brisbane",
+   "place_id": "ChIJ8VRnyQRakWsRD0FobGhUTRE",
+   "places_query": "Retailworld Resourcing Brisbane 260 Queen St",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "i had the opportunity to connect with de",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "such an incredible and rewarding experie",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "jamie has been extremely helpful through",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i had the pleasure of working with dean",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i wanted to say huge thank you to jamie",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "Perth",
+   "place_id": "ChIJPcQf0RWlMioRuC5x3HznydE",
+   "places_query": "Retailworld Resourcing Perth 191 St Georges Terrace",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "i had a fantastic experience with retail",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i had such a positive experience working",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "my experience with retailworld has been",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i have worked with retail world twice ov",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i cant thank hollie enough for her incre",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "Auckland",
+   "place_id": "ChIJcQMUznZIDW0RwilnteGtjWs",
+   "places_query": "Retailworld Resourcing Auckland 87 Albert Street",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "oh my gosh the retailworld team have bee",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "dana is incredible to work with she made",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "georgia was amazing she kept me updated",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "im genuinely grateful to georgia for her",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i was contacted by georgia hinton at ret",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "Lower North Island (Wellington)",
+   "place_id": "ChIJX2MHfNqvOG0RiL7C0zWhQl8",
+   "places_query": "Retailworld Resourcing Wellington Courtenay Place",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "my experience with vanessa was amazing w",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i had the pleasure of working with vanes",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "vanessa has been such a great help right",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "i made initial contact with vanessa by p",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "absolutely the best experience i have ev",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "South Island (Christchurch)",
+   "place_id": "ChIJCyQFtJOJMW0RzFJNOByEbsk",
+   "places_query": "Retailworld Resourcing Christchurch Saint Asaph Street",
+   "notes": "",
+   "seen": [
+    {
+     "fp": "stuart was nothing short of amazing he h",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "stewart was a pleasure to deal with and",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "stuart is amazing i have never seen some",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "a big thank you to stu first for finding",
+     "status": "seeded",
+     "date": "2026-10-13"
+    },
+    {
+     "fp": "this company helped me get into my lates",
+     "status": "seeded",
+     "date": "2026-10-13"
+    }
+   ]
+  },
+  {
+   "office": "Canberra",
+   "place_id": null,
+   "places_query": "Retailworld Resourcing Canberra",
+   "notes": "Not found in Google Places on 13 Oct 2026. Search again each run; flag if still missing.",
+   "seen": []
+  }
+ ]
+}
