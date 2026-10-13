@@ -240,5 +240,6 @@
    "notes": "Not found in Google Places on 13 Oct 2026. Search again each run; flag if still missing.",
    "seen": []
   }
- ]
+ ],
+ "last_template": "grid"
 }
