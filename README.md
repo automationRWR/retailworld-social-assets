@@ -14,6 +14,7 @@ Raw URL pattern: `https://raw.githubusercontent.com/automationRWR/retailworld-so
 | `posts/` | Carousels and single posts, PNG, 1080x1350 | 36 images |
 | `monday/` | Monday motivation stills and carousels, JPEG, 1080x1350 (Buffer-ready) | 18 images |
 | `blogs/` | Insights blog carousels and posts, JPEG, 1080x1350 (Buffer-ready) | 35 images |
+| `refer-a-friend/` | Refer a Friend campaign ($500 referral), Oct to Nov 2026 and Feb to Mar 2027: 3 reels (MP4), posts (JPEG 1080x1350) and stories (JPEG 1080x1920) | 25 files |
 | `source/motion/` | HTML/CSS/JS motion kit and Playwright + ffmpeg render scripts for reels, grid posts and Monday posts | |
 | `source/canvas/` | Design canvas boards for the static carousels and the offline PNG exporter | |
 | `reoty/` | Retail Employer of the Year (REOTY) wave 1, October to December 2026: reels and animated posts (MP4), carousels, posts and stories (JPEG), quote reels and cards, cover frames, render scripts and the captions and schedule. REOTY branding only, see below | 70 files |
