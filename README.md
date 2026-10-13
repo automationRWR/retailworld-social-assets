@@ -16,6 +16,7 @@ Raw URL pattern: `https://raw.githubusercontent.com/automationRWR/retailworld-so
 | `blogs/` | Insights blog carousels and posts, JPEG, 1080x1350 (Buffer-ready) | 35 images |
 | `source/motion/` | HTML/CSS/JS motion kit and Playwright + ffmpeg render scripts for reels, grid posts and Monday posts | |
 | `source/canvas/` | Design canvas boards for the static carousels and the offline PNG exporter | |
+| `reoty/` | Retail Employer of the Year (REOTY) wave 1, October to December 2026: reels and animated posts (MP4), carousels, posts and stories (JPEG), cover frames, render scripts and the captions and schedule. REOTY branding only, see below | 64 files |
 
 ## Re-rendering
 
@@ -30,3 +31,7 @@ Requires Python 3, Playwright with Chromium, and ffmpeg.
 ## Style
 
 The approved style rules live in Notion on the skill page "Retailworld Social Content: Style and Production". Short version: Poppins, Retailworld orange #F27C10 at full vibrancy with white and light grey, no gradients, no black backgrounds, Apple-style short lines, everyday phone UI as the medium, word-by-word kinetic type, logo only on first and last slides or scenes.
+
+## REOTY (Retail Employer of the Year)
+
+`reoty/` holds the award's Instagram content, which posts from the Retailworld account but carries REOTY branding only (purple, cream, lilac, Bricolage Grotesque and Poppins). It follows the REOTY brand guidelines, not the Retailworld style above. Stills are JPEG because Instagram publishing takes JPEG only. Files marked TEMPLATE carry sample text until the employee quotes and a winner's badge photo arrive. Captions and the posting schedule are in `reoty/REOTY-Instagram-wave-1-captions-and-schedule.md`; the style lives in Notion on the skill page "REOTY Instagram Campaign". Render with `cd reoty/source && python3 reels.py`, `python3 animposts.py` and `python3 stills.py` (needs the REOTY fonts and assets folders beside `source/`).
