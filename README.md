@@ -36,3 +36,7 @@ The approved style rules live in Notion on the skill page "Retailworld Social Co
 ## REOTY (Retail Employer of the Year)
 
 `reoty/` holds the award's Instagram content, which posts from the Retailworld account but carries REOTY branding only (purple, cream, lilac, Bricolage Grotesque and Poppins). It follows the REOTY brand guidelines, not the Retailworld style above. Stills are JPEG because Instagram publishing takes JPEG only. `reoty/quotes/` uses real employee quotes from the 2026 voting form, trimmed but not reworded, with no names. `P-badge-spotted-TEMPLATE` still needs a winner's badge photo. Captions and the posting schedule are in `reoty/REOTY-Instagram-wave-1-captions-and-schedule.md`; the style lives in Notion on the skill page "REOTY Instagram Campaign". Render with `cd reoty/source && python3 reels.py`, `python3 animposts.py` and `python3 stills.py` (needs the REOTY fonts and assets folders beside `source/`).
+
+## Mental Health Awareness Week 2026
+
+`mhaw-2026/` holds the Belonging Matters posts for 14 to 18 October 2026 (JPEG, 1080x1350): `photo/` (circle-cropped black and white photo, used for the Buffer drafts) and `graphic/` (flat circle graphics, alternates). Finished posts only, no original stock photos.
