@@ -4,7 +4,6 @@ Flat vector key-date content with the full brand lockup on every frame. Saved to
 
 | Draft date | Key date | Format | File |
 |---|---|---|---|
-| Thu 22 Oct 2026 4:00pm AEDT | NZ Labour Day 2026 | Animated post 1080x1350 | `posts/22-nz-labour-day-2026.mp4` |
 | Mon 2 Nov 2026 12:30pm AEDT | Melbourne Cup Day | Animated post 1080x1350 | `posts/21-melbourne-cup-2026.mp4` |
 | Fri 13 Nov 2026 5:30pm AEDT | World Kindness Day | Animated post 1080x1350 | `posts/01-world-kindness-day.mp4` |
 | Thu 19 Nov 2026 6:00pm AEDT | International Men's Day | Post 1080x1350 | `posts/02-international-mens-day.png` |
