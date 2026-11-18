@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="post.css">
+<style>
+#board{position:absolute;left:70px;right:70px;top:440px;background:#fff;color:#1D1D1F;border-radius:44px;box-shadow:0 36px 80px rgba(0,0,0,.14);padding:40px 40px 24px;z-index:5}
+.bh{display:flex;justify-content:space-between;align-items:center;font-size:28px;font-weight:600;letter-spacing:.14em;color:#F27C10;padding-bottom:18px;border-bottom:2px solid #1D1D1F}
+.bh span{color:#6E6E73;font-weight:500;letter-spacing:.02em}
+.cols{display:flex;font-size:18px;font-weight:500;letter-spacing:.12em;color:#6E6E73;padding:16px 0 4px}
+.row{display:flex;align-items:center;height:104px;border-bottom:1px solid #E5E5EA}
+.row .d{flex:1;font-size:38px;font-weight:600}
+.row .c{width:230px;font-size:28px;font-weight:500;color:#6E6E73}
+.row .s{width:180px;text-align:right}
+.st{display:inline-block;background:#F27C10;color:#fff;font-size:20px;font-weight:600;letter-spacing:.1em;padding:11px 18px;border-radius:999px}
+</style></head><body>
+<section class="sc orange" id="s" style="display:block">
+  <div class="t" style="top:170px;font-size:120px;font-weight:700;letter-spacing:-0.025em;line-height:1">Now boarding.</div>
+  <div class="t" style="top:320px;font-size:42px;font-weight:300">Your next retail role, AU and NZ.</div>
+  <div id="board">
+    <div class="bh">DEPARTURES<span>9:41</span></div>
+    <div class="cols"><div style="flex:1">ROLE</div><div style="width:230px">CITY</div><div style="width:180px;text-align:right">STATUS</div></div>
+    <div id="rows"></div>
+  </div>
+</section>
+<script src="lib.js"></script><script src="post.js"></script>
+<script>
+window.DURATION = 8;
+const R = [['STORE MANAGER','Sydney'],['AREA MANAGER','Melbourne'],['VISUAL MERCH','Brisbane'],['BUYER','Auckland'],['ASSISTANT MGR','Perth']];
+const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function setup() {
+  $('#rows').innerHTML = R.map((r, i) => `<div class="row"><div class="d" id="d${i}"></div><div class="c">${r[1]}</div><div class="s"><span class="st" id="s${i}">BOARDING</span></div></div>`).join('');
+}
+function scr(w, t, a, seed) {
+  return w.split('').map((ch, j) => {
+    if (ch === ' ') return ' ';
+    if (t < a || t >= a + .35 + j * .04) return ch;
+    const f = Math.floor(t * 24); return AZ[(f * 7 + j * 13 + seed * 31 + f * j * 5 + (f * f) % 11) % 26];
+  }).join('');
+}
+function render(t) {
+  $('#board').style.transform = `translateY(${8 * osc(t, 1)}px) rotate(${.5 * osc(t, 1, 1)}deg)`;
+  R.forEach((r, i) => {
+    $('#d' + i).textContent = scr(r[0], t, .6 + i * 1.1, i);
+    $('#s' + i).style.opacity = .55 + .45 * (.5 + .5 * osc(t, 4, i * 1.2));
+  });
+}
+</script></body></html>

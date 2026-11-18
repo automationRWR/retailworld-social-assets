@@ -1,0 +1,12 @@
+.eyebrow{position:absolute;left:0;right:0;top:170px;text-align:center;font-size:38px;font-weight:300;z-index:5}
+.title{position:absolute;left:0;right:0;text-align:center;font-weight:700;letter-spacing:-0.025em;line-height:1;z-index:5}
+.foot{position:absolute;left:0;right:0;bottom:70px;text-align:center;font-size:32px;font-weight:300;z-index:5}
+.cardw{position:absolute;background:#fff;color:#1D1D1F;border-radius:48px;box-shadow:0 36px 80px rgba(0,0,0,.12);z-index:4}
+.chk{width:62px;height:62px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.chk.on{background:#F27C10}
+.chk.off{border:4px solid #C7C7CC}
+.item{display:flex;align-items:center;gap:30px;font-size:44px;font-weight:500;padding:24px 0;border-bottom:1px solid #E5E5EA}
+.item.done span{color:#AEAEB2}
+.bub{max-width:780px;font-size:38px;font-weight:500;line-height:1.3;padding:26px 36px;border-radius:44px}
+.in{background:#fff;color:#1D1D1F;border-bottom-left-radius:12px;align-self:flex-start}
+.out{background:#1D1D1F;color:#fff;border-bottom-right-radius:12px;align-self:flex-end}

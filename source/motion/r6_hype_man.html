@@ -1,0 +1,74 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css">
+<style>
+.l64{font-size:64px;font-weight:300}
+.b190{font-size:190px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+.b150{font-size:150px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+#card{position:absolute;left:70px;right:70px;top:380px;background:#fff;border-radius:52px;box-shadow:0 40px 100px rgba(0,0,0,.12);padding:54px 54px 50px;z-index:5;transform-origin:50% 30%}
+.who{display:flex;align-items:center;gap:22px}
+.avt{width:96px;height:96px;border-radius:50%;background:#F27C10;color:#fff;display:flex;align-items:center;justify-content:center}
+.stars{display:flex;gap:10px;margin:30px 0 26px}
+.stars svg{width:62px;height:62px}
+#rv{font-size:38px;font-weight:400;line-height:1.5}
+#rv .hl{position:relative;font-weight:600;white-space:normal}
+.hlbg{background-image:linear-gradient(#F27C10,#F27C10);background-repeat:no-repeat;background-position:0 88%;background-size:0% 40%}
+</style></head><body>
+<section class="sc white" id="s1"><img class="logo" src="a/logo.png">
+  <div class="t" style="top:520px" id="t1a" data-text="[l64]Real review. Real recruiter."></div>
+  <div class="t" style="top:640px" id="t1" data-text="[b190]Meet your|[b190 or]hype man."></div>
+</section>
+<section class="sc white" id="s2" style="background:#F5F5F7"><img class="logo" src="a/logo.png">
+  <div id="card">
+    <div class="who"><div class="avt"><svg width="52" height="52" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="8" r="4.5"/><path d="M3,22 C3,15.5 21,15.5 21,22 Z"/></svg></div>
+      <div><div style="font-size:34px;font-weight:600">Google review</div><div style="font-size:26px;color:#6E6E73">About Dean</div></div></div>
+    <div class="stars" id="stars"></div>
+    <div id="rv"></div>
+  </div>
+</section>
+<section class="sc orange" id="s3"><img class="logo" src="a/logo_white.png">
+  <div class="t lbl" style="top:500px;font-size:46px" id="t3a" data-text="Your turn."></div>
+  <div class="t" style="top:610px" id="t3" data-text="[b150]Get someone|[b150]in your|[b150]corner."></div>
+  <div class="t lbl" style="top:1160px" id="t3b" data-text="Ask for Dean. Or anyone on the team."></div>
+  <div class="pill" id="cta" style="top:1340px">Comment HYPE</div>
+</section>
+<script src="lib.js"></script>
+<script>
+window.DURATION = 14;
+const REVIEW = "I have never worked along side recruiters who have been better at communicating. {Dean was absolutely my hype man} through all this, he made the whole process so much less daunting and like I had someone who was totally in my corner. He had great advice, friendly service and {10/10 communication} and I strongly believe he is a big reason as to why I landed my new job!";
+function setup() {
+  circles($('#s1'), [[960,300,280,'#F27C10',.55,60,0],[150,1620,520,'#F5F5F7',.35,80,1],[960,1700,170,'ring:#F27C10',.8,50,2],[130,420,90,'#F27C10',1,40,3]]);
+  circles($('#s2'), [[980,260,220,'ring:#F27C10',.5,40,0],[100,1780,320,'#FFFFFF',.4,40,1],[990,1760,130,'#F27C10',.9,30,2]]);
+  circles($('#s3'), [[880,380,380,'ring:#FFFFFF',.5,60,0],[140,1580,600,'#F58A28',.35,70,1],[960,1640,150,'#FFFFFF',.9,40,2],[120,420,90,'#FFFFFF',1.1,40,3]]);
+  const star = '<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,9.5 L16.5,14 L18.5,21 L12,17 L5.5,21 L7.5,14 L2,9.5 L9,9 Z" fill="#F27C10"/></svg>';
+  $('#stars').innerHTML = [0,1,2,3,4].map(i => `<span id="sr${i}" style="display:inline-block">${star}</span>`).join('');
+  // words with highlight groups
+  let html = '', hl = 0;
+  REVIEW.split(/(\{[^}]+\})/).forEach(part => {
+    if (!part) return;
+    if (part[0] === '{') { html += `<span class="hl hlbg" id="hl${hl++}">` + part.slice(1, -1).split(' ').map(w => `<span class="rw">${w}</span>`).join(' ') + '</span> '; }
+    else html += part.trim().split(' ').map(w => `<span class="rw">${w}</span>`).join(' ') + ' ';
+  });
+  $('#rv').innerHTML = html; window._rw = $$('.rw');
+}
+function render(t) {
+  $$('.sc').forEach(s => moveCircles(s, t));
+  if (scene($('#s1'), t, 0, 3.4)) {
+    words($('#t1a'), t, .2, { st: .05 });
+    words($('#t1'), t, .5, { type: 'rise', st: .12 });
+  }
+  if (scene($('#s2'), t, 2.9, 10.2, { x: 540, y: 960 })) {
+    rise($('#card'), t, 3.1, { dy: 600, d: 1 });
+    const z = E.io(P(t, 7.6, 1.6));
+    $('#card').style.transform += ` scale(${1 + z * .1}) translateY(${-z * 40}px) rotate(${Math.sin(t * .9) * .5}deg)`;
+    for (let i = 0; i < 5; i++) { const p = P(t, 3.8 + i * .15, .45); $('#sr' + i).style.transform = `scale(${E.back(p)}) rotate(${(1 - E.o5(p)) * -60}deg)`; }
+    _rw.forEach((w, i) => { const p = P(t, 4.5 + i * .045, .25); w.style.opacity = cl(p * 1.5); });
+    $('#hl0').style.backgroundSize = `${E.io(P(t, 5.6, .6)) * 100}% 40%`;
+    $('#hl1').style.backgroundSize = `${E.io(P(t, 6.9, .6)) * 100}% 40%`;
+  }
+  if (scene($('#s3'), t, 9.7, 14, { x: 900, y: 1700 })) {
+    words($('#t3a'), t, 10.1, { st: .05 });
+    words($('#t3'), t, 10.3, { type: 'drop', st: .12, d: .9 });
+    words($('#t3b'), t, 11.6, { type: 'blur', st: .04 });
+    pop($('#cta'), t, 12.2, { base: 'translateX(-50%)' });
+  }
+}
+</script></body></html>

@@ -1,0 +1,5 @@
+html,body{width:1080px;height:1350px}
+.logo{top:70px;width:190px}
+.t{position:absolute;left:0;right:0;text-align:center;z-index:5}
+.lbl{font-weight:300;font-size:40px}
+.pill{font-size:34px;padding:22px 44px}

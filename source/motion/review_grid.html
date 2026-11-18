@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="post.css">
+<!--
+  RETAILWORLD GOOGLE REVIEW ANIMATED GRID POST TEMPLATE ("Five stars. No notes.")
+  1080 x 1350, seamless 8s loop, no logo. Edit the REVIEW block, then render:
+    python3 render_post.py review_grid.html out.mp4 4   (writes out.mp4 + out.png still at 4s)
+  Rules: never put the reviewer's name in. Wrap one phrase in {curly braces} to highlight it.
+-->
+<style>
+.b150{font-size:150px;font-weight:700;letter-spacing:-0.045em;line-height:.98}
+#stars{position:absolute;left:0;right:0;top:250px;display:flex;justify-content:center;gap:26px;z-index:5}
+.sw{position:relative;width:104px;height:104px;display:inline-block}
+.sw svg{position:absolute;inset:0;width:104px;height:104px}
+#quote{position:absolute;left:110px;right:110px;top:790px;text-align:center;font-size:54px;font-weight:300;line-height:1.4;z-index:5}
+#quote .hl{font-weight:600;background-image:linear-gradient(#F27C10,#F27C10);background-repeat:no-repeat;background-position:0 88%;background-size:0% 38%}
+#foot{position:absolute;left:0;right:0;top:1150px;text-align:center;font-size:30px;font-weight:500;color:#6E6E73;z-index:5}
+</style></head><body>
+<section class="sc white" id="s" style="display:block">
+  <div id="stars"></div>
+  <div class="t" style="top:430px"><span class="ln b150">Five stars.</span><span class="ln b150 or">No notes.</span></div>
+  <div id="quote"></div>
+  <div id="foot"></div>
+</section>
+<script src="lib.js"></script><script src="post.js"></script>
+<script>
+// ===================== EDIT ME =====================
+const REVIEW = {
+  recruiter: 'Dean',                                   // "Google review, about Dean". Never the reviewer's name.
+  quote: '“{Dean was absolutely my hype man} through all this.”' // 15 words max, one {highlight}
+};
+// ===================================================
+window.DURATION = 8;
+const PATH = 'M12,2 L15,9 L22,9.5 L16.5,14 L18.5,21 L12,17 L5.5,21 L7.5,14 L2,9.5 L9,9 Z';
+function setup() {
+  $('#stars').innerHTML = [0,1,2,3,4].map(i =>
+    `<span class="sw" id="st${i}"><svg viewBox="0 0 24 24"><path d="${PATH}" fill="none" stroke="#F27C10" stroke-width="1.4" stroke-linejoin="round"/></svg>` +
+    `<svg viewBox="0 0 24 24" class="fill" id="sf${i}"><path d="${PATH}" fill="#F27C10" stroke="#F27C10" stroke-width="1.4" stroke-linejoin="round"/></svg></span>`).join('');
+  $('#quote').innerHTML = REVIEW.quote.replace(/\{([^}]+)\}/g, '<span class="hl" id="hl">$1</span>');
+  $('#foot').textContent = 'Google review, about ' + REVIEW.recruiter;
+  loopCircles($('#s'), [[980,170,220,'#F27C10',30,1,1,0],[90,1220,300,'ring:#F27C10',30,1,1,1.5],[1000,1180,110,'#F27C10',20,1,2,3],[100,560,80,'#F5F5F7',20,1,1,2]]);
+}
+// Timeline (8s): stars fill 0.5 to 2.3s, highlight sweeps 2.5 to 3.2s, hold, everything eases back 6.6 to 7.8s.
+function render(t) {
+  moveLoop($('#s'), t);
+  const back = E.io(P(t, 6.6, 1.2));               // 0 -> 1 as the loop resets
+  for (let i = 0; i < 5; i++) {
+    const p = P(t, .5 + i * .36, .5), k = E.back(p);
+    const f = $('#sf' + i);
+    f.style.transform = `scale(${k * (1 - back)})`; f.style.transformOrigin = '50% 55%';
+    const hop = Math.sin(cl(p * 1.6) * Math.PI) * (1 - back);
+    $('#st' + i).style.transform = `translateY(${-24 * hop}px) rotate(${hop * 14}deg)`;
+  }
+  const h = $('#hl');
+  if (h) {
+    const sweep = E.io(P(t, 2.5, .7));
+    // fill left to right, then clear left to right so the reset still reads as motion
+    h.style.backgroundPosition = back > 0 ? '100% 88%' : '0 88%';
+    h.style.backgroundSize = `${(sweep * (1 - back)) * 100}% 38%`;
+  }
+}
+</script></body></html>

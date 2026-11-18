@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="mm.css">
+<style>
+html,body{width:6480px;height:1350px}
+.row{display:flex;width:6480px;height:1350px}
+.sl{position:relative;width:1080px;height:1350px;overflow:hidden;flex-shrink:0}
+.sl.o{background:#F27C10;color:#fff}.sl.w{background:#fff;color:#1D1D1F}
+.lg{position:absolute;left:50%;top:70px;width:190px;transform:translateX(-50%)}
+.time{position:absolute;left:0;right:0;top:300px;text-align:center;font-size:250px;font-weight:300;letter-spacing:-0.04em;line-height:1}
+.time small{font-size:90px;font-weight:400;letter-spacing:0}
+.day{position:absolute;left:0;right:0;top:230px;text-align:center;font-size:38px;font-weight:500}
+.ntf{position:absolute;left:110px;right:110px;top:700px;background:#fff;color:#1D1D1F;border-radius:44px;padding:34px 36px;display:flex;gap:28px;align-items:center;box-shadow:0 30px 70px rgba(0,0,0,.12)}
+.ntf .ic{width:110px;height:110px;border-radius:28px;background:#F27C10;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ntf .ic img{width:82px}
+.ntf .h{display:flex;justify-content:space-between;font-size:28px;font-weight:600}
+.ntf .h span{font-weight:400;color:#6E6E73}
+.ntf .b{font-size:40px;font-weight:600;line-height:1.2;margin-top:4px}
+.ntf .s{font-size:30px;font-weight:400;color:#6E6E73;margin-top:4px}
+.ghost{opacity:.55;transform:scale(.94);top:610px}
+.sw{position:absolute;left:0;right:0;bottom:70px;text-align:center;font-size:32px;font-weight:300}
+.dots{position:absolute;left:0;right:0;bottom:130px;display:flex;justify-content:center;gap:12px}
+</style></head><body><div class="row">
+<div class="sl o"><img class="lg" src="a/logo_white.png">
+  <div class="eyebrow">Monday motivation</div>
+  <div class="title" style="top:240px;font-size:150px;line-height:1">Monday,<br>by the hour.</div>
+  <div class="ntf ghost" style="top:690px"><div class="ic"><img src="a/logo_white.png"></div><div style="flex:1"><div class="h">Retailworld<span>7:00am</span></div><div class="b">Rise and shine.</div><div class="s">Big week incoming.</div></div></div>
+  <div class="ntf" style="top:800px"><div class="ic"><img src="a/logo_white.png"></div><div style="flex:1"><div class="h">Retailworld<span>now</span></div><div class="b">You've got 5 new messages</div><div class="s">From your Monday. Swipe to read.</div></div></div>
+  <div class="sw">Swipe →</div>
+</div>
+<!--SLIDES--></div>
+<script src="lib.js"></script><script>window.DURATION=1;window.SLIDES=6;
+const N=[['7:00','am','Alarm','Snooze? Not this week.','Feet on the floor. Let\'s go.'],
+['9:00','am','Retailworld','Doors open.','Lights on, music up, big week starts now.'],
+['12:30','pm','Retailworld','Lunch rush. You\'re thriving.','Grab a water. Seriously.'],
+['3:00','pm','Retailworld','Halfway there.','Keep the energy up. The team\'s watching.'],
+['5:30','pm','Retailworld','Monday: done.','See you tomorrow. Same energy.']];
+const EARLY=['Sunday','Weekend','Recharged.','Two days off. Batteries full.'];
+function card(h,b,s,t,top,fade,done){const ic=done?'<div class="ic" style="background:#1D1D1F"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>':'<div class="ic"><img src="a/logo_white.png"></div>';
+ return `<div class="ntf" style="top:${top}px;${fade?'opacity:.55;transform:scale(.92);transform-origin:50% 0;':''}">${ic}<div style="flex:1"><div class="h">${h}<span>${t}</span></div><div class="b">${b}</div><div class="s">${s}</div></div></div>`;}
+function setup(){let h='';N.forEach((n,i)=>{const o=i%2===1;
+ let x=`<div class="sl ${o?'o':'w'}">${i===4?`<img class="lg" src="a/${o?'logo_white':'logo'}.png">`:''}<div class="day">Monday</div><div class="time">${n[0]}<small>${n[1]}</small></div>`;
+ x+=card(n[2],n[3],n[4],'now',700,false,i===4);
+ const prev=[]; for(let j=i-1;j>=0;j--) prev.push(N[j]); 
+ const hist=prev.length?prev.slice(0,i===4?1:2).map((p,k)=>card(p[2],p[3],p[4],p[0]+p[1],975+k*185,true,false)).join(''):card(EARLY[1],EARLY[2],EARLY[3],EARLY[0],975,true,false);
+ x+=`<div style="position:absolute;left:120px;top:930px;font-size:26px;font-weight:600;letter-spacing:.08em;opacity:.7">EARLIER</div>`+hist;
+ if(i===4) x+=`<div class="sw" style="font-size:34px;bottom:60px">Have a big week, from the Retailworld crew.</div>`;
+ h+=x+'</div>';});
+ $('.row').insertAdjacentHTML('beforeend',h);}
+function render(){}</script></body></html>

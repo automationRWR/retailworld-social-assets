@@ -1,0 +1,134 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="blog.css">
+</head><body><div class="row"></div>
+<script>
+// Blog carousels from retailworldresourcing.com/insights. Pick a set with #id (cv, role, interview, reoty, keep, speed, standout, brand).
+const TICK = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const UP = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+const EYE = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+const STAR = '<svg width="54" height="54" viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,9.5 L16.5,14 L18.5,21 L12,17 L5.5,21 L7.5,14 L2,9.5 L9,9 Z" fill="#fff"/></svg>';
+const logo = o => `<img class="lg" src="a/${o ? 'logo_white' : 'logo'}.png">`;
+const dot = (on, icon) => `<div class="dot ${on ? 'on' : 'off'}">${on ? (icon || TICK) : ''}</div>`;
+const rows = (items, pad) => `<div class="card" style="margin-top:56px;padding:${pad || '18px 50px'}">${items.map(r => `<div class="row-i">${r}</div>`).join('')}</div>`;
+const chips = (list, on) => `<div class="chips">${list.map((c, i) => `<div class="chip ${on === i ? 'on' : ''}">${c}</div>`).join('')}</div>`;
+const S = (cls, body, extra) => `<div class="sl ${cls}">${extra || ''}${body}</div>`;
+
+const SETS = {
+// 1. Is your CV getting you an interview? (candidates)
+cv: [
+  S('w', `<div class="in c"><div class="kick">Recruiter insights</div><div class="h">Your CV has<br><span class="or">six seconds.</span></div>
+    <div class="card" style="margin:70px auto 0;width:700px;padding:44px 50px 50px;text-align:center">
+      <div style="font-size:30px;font-weight:500;color:#6E6E73">Recruiter scan time</div>
+      <div style="font-size:210px;font-weight:300;letter-spacing:-0.04em;line-height:1.05">0:06</div>
+      <div style="display:flex;justify-content:center;gap:40px;margin-top:10px">
+        <div style="width:150px;height:150px;border-radius:50%;background:#F5F5F7;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:500;color:#6E6E73">Cancel</div>
+        <div style="width:150px;height:150px;border-radius:50%;background:#F27C10;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:500;color:#fff">Start</div>
+      </div></div></div>
+    <div class="foot">Three fixes. Swipe →</div>`, logo(0)),
+  S('o', `<div class="in"><div class="cnt">01 / 03</div><div class="h">Lead with<br>numbers.</div><div class="sub">Swap duties for outcomes.</div>
+    <div class="card" style="margin-top:50px;padding:34px 44px;background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.4);box-shadow:none;color:#fff">
+      <div style="font-size:30px;font-weight:600;letter-spacing:.06em;opacity:.9">BEFORE</div>
+      <div style="font-size:38px;font-weight:300;line-height:1.35;margin-top:10px">"Responsible for managing store targets and staff schedules."</div></div>
+    <div class="card" style="margin-top:26px;padding:34px 44px">
+      <div style="font-size:30px;font-weight:600;letter-spacing:.06em;color:#F27C10">AFTER</div>
+      <div style="font-size:38px;font-weight:500;line-height:1.35;margin-top:10px">"Led a team of 14, driving a <span style="color:#F27C10;font-weight:700">12% YoY</span> sales increase and maintaining wage control within <span style="color:#F27C10;font-weight:700">0.5%</span> of budget."</div></div></div>`),
+  S('w', `<div class="in"><div class="cnt">02 / 03</div><div class="h">Name your<br><span class="or">patch.</span></div><div class="sub">Say your retail domain up front, so they know exactly where you fit.</div>
+    ${chips(['Fast fashion', 'Luxury goods', 'Big-box hardware', 'FMCG', 'Specialty retail'], 1)}</div>`),
+  S('g', `<div class="in"><div class="cnt">03 / 03</div><div class="h">Make it<br>scannable.</div>
+    ${rows([dot(1) + '<span>Two or three pages, max.</span>', dot(1) + '<span>Clean type. Poppins works.</span>', dot(1) + '<span>Bullets, not paragraphs.</span>', dot(1) + '<span>Numbers in the top third.</span>'])}</div>`),
+  S('o', `<div class="in c low"><div class="kick">Fixed it?</div><div class="h">Now find<br>the role.</div><div class="sub">Read the full guide, then browse retail roles across Australia and New Zealand.</div><div class="pill">Link in bio</div></div>`, logo(1)),
+],
+// 2. How to Choose the Right Retail Role (candidates)
+role: [
+  S('w', `<div class="in c low"><div class="kick">How to choose the right retail role</div><div class="h">Don't let<br>a job title<br><span class="or">choose<br>for you.</span></div><div class="sub muted">Three steps and a checklist.</div></div><div class="foot">Swipe →</div>`, logo(0)),
+  S('o', `<div class="in"><div class="cnt">STEP 1</div><div class="h">Know your<br>must-haves.</div><div class="sub">Set your non-negotiables before a title sways you.</div>
+    ${chips(['Culture', 'Travel', 'Store footprint', 'Autonomy', 'Pay structure'])}</div>`),
+  S('w', `<div class="in"><div class="cnt">STEP 2</div><div class="h">Check the<br><span class="or">health.</span></div><div class="sub">Look past the shopfront. Strong foundations mean security, budget and room to grow.</div>
+    ${rows([dot(1, UP) + '<span>Store network growth</span>', dot(1, UP) + '<span>Digital integration</span>', dot(1, UP) + '<span>Customer retention</span>'])}</div>`),
+  S('o', `<div class="in"><div class="cnt">STEP 3</div><div class="h">Meet the<br>leaders.</div><div class="sub">In the interview, ask:</div>
+    <div class="bubs"><div class="bub me">What's team turnover like?</div><div class="bub me">How many managers were promoted from within?</div><div class="bub me">How would you describe the leadership style?</div></div></div>`),
+  S('w', `<div class="in"><div class="cnt">THE CHECKLIST</div><div class="h">Score the<br><span class="or">offer.</span></div>
+    <div class="card" style="margin-top:48px;padding:30px 50px 14px"><div style="display:flex;justify-content:space-between;font-size:30px;font-weight:500;color:#F27C10"><span>‹ Offers</span><span>4/5</span></div>
+    ${['Strategic alignment', 'Scope for impact', 'Growth trajectory', 'Leadership match', 'Total value'].map((t, i) => `<div class="row-i" style="${i === 4 ? 'border-bottom:none' : ''}">${dot(i < 4)}<span style="${i < 4 ? '' : 'color:#AEAEB2'}">${t}</span></div>`).join('')}</div>
+    <div class="sub" style="margin-top:30px;font-weight:500;color:#F27C10">Four or five ticks? Strong match.</div></div>`),
+  S('o', `<div class="in c low"><div class="kick">Ready to choose?</div><div class="h">Find a role<br>worth ticking.</div><div class="sub">Management roles across Australia and New Zealand.</div><div class="pill">Link in bio</div></div>`, logo(1)),
+],
+// 3. Interview Skills: How to Be Fully Prepared (candidates)
+interview: [
+  S('w', `<div class="in c"><div class="kick">Interview skills</div><div class="h">Walk in<br><span class="or">ready.</span></div><div class="sub muted">How retail managers prepare for the offer.</div>
+    <div class="card noti" style="margin:64px auto 0;width:820px"><div class="app"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+    <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:30px;font-weight:600"><span>Calendar</span><span style="font-weight:400;color:#6E6E73">now</span></div><div style="font-size:38px;font-weight:500;margin-top:4px">Interview. Tomorrow, 10:00am.</div><div style="font-size:32px;font-weight:300;color:#6E6E73;margin-top:2px">You've got this. Swipe to prep.</div></div></div></div>`, logo(0)),
+  S('o', `<div class="in"><div class="cnt">01 / 04</div><div class="h">STAR it.</div>
+    <div style="margin-top:46px;display:flex;flex-direction:column;gap:14px">
+    ${[['S', 'Situation'], ['T', 'Task'], ['A', 'Action']].map(r => `<div style="display:flex;align-items:baseline;gap:40px;padding:6px 44px"><span style="font-size:110px;font-weight:700;width:90px">${r[0]}</span><span style="font-size:52px;font-weight:300">${r[1]}</span></div>`).join('')}
+    <div class="card" style="display:flex;align-items:center;gap:40px;padding:22px 44px"><span style="font-size:110px;font-weight:700;width:90px;color:#F27C10">R</span><span><span style="font-size:52px;font-weight:600">Result.</span><br><span style="font-size:36px;font-weight:300;color:#6E6E73">Spend most of your time here.</span></span></div></div></div>`),
+  S('w', `<div class="in"><div class="cnt">02 / 04</div><div class="h">Bring the<br><span class="or">numbers.</span></div><div class="sub">Back every result with a figure.</div>
+    ${chips(['Sales growth', 'Conversion rate', 'Shrink reduction', 'Staff retention', 'Wage control %'], 0)}</div>`),
+  S('o', `<div class="in"><div class="cnt">03 / 04</div><div class="h">Walk the<br>floor first.</div><div class="sub">Visit at least one store before you go in. Take notes.</div>
+    ${rows([dot(1, EYE) + '<span>Customer journey</span>', dot(1, EYE) + '<span>Team culture</span>', dot(1, EYE) + '<span>Visual merchandising</span>', dot(1, EYE) + '<span>Stock availability</span>'])}</div>`),
+  S('g', `<div class="in"><div class="cnt">04 / 04</div><div class="h">Ask back.</div><div class="sub">Bring two or three strategic questions.</div>
+    <div class="bubs"><div class="bub me">What are the growth plans?</div><div class="bub me">How are the stores supported?</div><div class="bub me">How would you describe the culture?</div><div class="bub" style="background:#fff;box-shadow:0 14px 36px rgba(0,0,0,.08)">Great question.</div></div></div>`),
+  S('o', `<div class="in c low"><div class="kick">Prepared?</div><div class="h">Now go get<br>the offer.</div><div class="sub">Search management roles across Australia and New Zealand.</div><div class="pill">Link in bio</div></div>`, logo(1)),
+],
+// 4. What Makes a Retail Employer of the Year? (employers)
+reoty: [
+  S('w', `<div class="in c"><div style="width:150px;height:150px;border-radius:50%;background:#F27C10;margin:0 auto 40px;display:flex;align-items:center;justify-content:center">${STAR.replace(/54/g, '80')}</div>
+    <div class="kick">For employers</div><div class="h" style="font-size:118px">What makes a<br><span class="or">Retail Employer<br>of the Year?</span></div><div class="sub muted">Three things they all get right.</div></div><div class="foot">Swipe →</div>`, logo(0)),
+  S('o', `<div class="in"><div class="cnt">01 / 03</div><div class="h" style="font-size:116px">A brand<br>people can see.</div><div class="sub">Candidates judge you before they apply. Show them who you really are.</div>
+    ${chips(['Real employees', 'Real values', 'Real milestones'])}</div>`),
+  S('w', `<div class="in"><div class="cnt">02 / 03</div><div class="h" style="font-size:116px">A culture<br>people can <span class="or">feel.</span></div><div class="sub">Culture is the lived experience of your whole team.</div>
+    ${chips(['Open communication', 'Psychological safety', 'Regular recognition'], 2)}</div>`),
+  S('o', `<div class="in"><div class="cnt">03 / 03</div><div class="h" style="font-size:116px">A path<br>people can follow.</div><div class="sub">Structured leadership training, internal progression and upskilling.</div>
+    <div style="margin-top:60px;display:flex;flex-direction:column;gap:22px">
+      <div class="chip" style="align-self:flex-start">Mid-management</div>
+      <div class="chip" style="align-self:center">Senior leadership</div>
+      <div class="chip" style="align-self:flex-end">Executive ↗</div></div></div>`),
+  S('w', `<div class="in"><div class="cnt">THE BENCHMARK</div><div class="big-n">30%</div><div class="h" style="font-size:84px;margin-top:40px">of your management team, <span class="or">promoted from within.</span></div><div class="sub muted">That's the bar. Where does your business sit?</div></div>`),
+  S('o', `<div class="in c low"><div class="kick">Building your team?</div><div class="h">Be the one<br>they want<br>to join.</div><div class="sub">Talk to our specialist retail recruitment team.</div><div class="pill">Link in bio</div></div>`, logo(1)),
+],
+// 5. Why the Best Retailers Are Winning Talent (And Keeping It) (employers, single post)
+keep: [
+  S('w', `<div class="in" style="top:120px"><div class="kick">Why the best retailers keep their talent</div><div class="big-n" style="font-size:330px">2x</div>
+    <div class="h" style="font-size:68px;margin-top:30px">Replacing a team member can cost up to <span class="or">double their annual salary.</span></div>
+    <div class="sub" style="font-size:40px">The fix isn't perks. It's these three:</div>
+    <div class="chips" style="margin-top:36px;gap:16px">${['The daily grind', 'The leadership shadow', 'The feedback loop'].map(c => `<div class="chip">${c}</div>`).join('')}</div></div>`),
+],
+// 6. The Hiring Process That Wins Candidates (employers)
+speed: [
+  S('w', `<div class="in c"><div class="kick">For employers</div><div class="h" style="font-size:116px">You didn't lose<br>them on salary.</div><div class="sub" style="font-weight:500;font-size:54px">You lost them on <span style="color:#F27C10;font-weight:700">speed.</span></div>
+    <div class="card noti" style="margin:64px auto 0;width:840px"><div class="app" style="background:#1D1D1F"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg></div>
+    <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:30px;font-weight:600"><span>Your top candidate</span><span style="font-weight:400;color:#6E6E73">now</span></div><div style="font-size:36px;font-weight:400;margin-top:6px;line-height:1.3">Thanks for your time, but I've accepted another offer.</div></div></div></div>`, logo(0)),
+  S('o', `<div class="in"><div class="cnt">THE 24-HOUR TEST</div><div class="h">How fast is<br>your hire?</div>
+    <div class="card" style="margin-top:56px;padding:18px 50px">
+    ${[['Shortlist contacted', '24 to 48 hrs'], ['Interview stages', '2 max'], ['Feedback after interview', '24 hrs'], ['Contract after a verbal yes', '24 hrs']].map(r => `<div class="row-i" style="justify-content:space-between"><span>${r[0]}</span><span style="font-size:34px;font-weight:600;color:#F27C10;background:#FEF2E7;padding:12px 26px;border-radius:999px;white-space:nowrap">${r[1]}</span></div>`).join('')}</div></div>`),
+  S('w', `<div class="in low"><div class="cnt">ONE NO?</div><div class="h" style="font-size:150px">Your pipeline<br>is <span class="or">leaking.</span></div><div class="sub">Retail candidates interview with several employers at once. Silence reads as "not interested".</div></div>`),
+  S('g', `<div class="in"><div class="cnt">THE FIX</div><div class="h">Treat them<br>like <span class="or">VIPs.</span></div><div class="sub">Run the candidate experience like a high-value customer journey.</div>
+    ${rows([dot(1) + '<span>Set internal feedback deadlines</span>', dot(1) + '<span>Consolidate interviews</span>', dot(1) + '<span>Share the timeline from day one</span>'])}</div>`),
+  S('o', `<div class="in c low"><div class="kick">Hiring now?</div><div class="h">Get there<br>first.</div><div class="sub">List a vacancy with our specialist retail team.</div><div class="pill">Link in bio</div></div>`, logo(1)),
+],
+// 7. What Makes a "Standout" Candidate in Today's Market (candidates, single post)
+standout: [
+  S('o', `<div class="in" style="top:150px"><div class="kick">What makes a standout candidate</div><div class="h" style="font-size:128px">Skills can<br>be taught.<br>Attitude<br>can't.</div>
+    <div class="sub">Employers are hiring for:</div>
+    ${chips(['Adaptability', 'Customer-first', 'Always learning', 'Solution-focused'])}
+    <div class="sub" style="font-size:38px;margin-top:40px">Prove each one with a real example.</div></div>`),
+],
+// 8. Employment Brand: What's All The Fuss (employers)
+brand: [
+  S('w', `<div class="in c low"><div class="kick">Employment brand</div><div class="h" style="font-size:150px">What's all<br>the <span class="or">fuss?</span></div><div class="sub">Your employer brand is the engine behind your talent pipeline.</div></div><div class="foot">Take the health check →</div>`, logo(0)),
+  S('o', `<div class="in"><div class="cnt">HEALTH CHECK</div><div class="h">Be honest.</div>
+    <div class="card" style="margin-top:50px;padding:14px 46px">
+    ${[['Do employee reviews reflect your values?', 1], ['Is your interview process structured, respectful and transparent?', 0], ['Can candidates see what it\'s really like to work for you?', 1], ['Are your leaders promoting the business online?', 0]].map((r, i) => `<div class="row-i" style="justify-content:space-between;gap:36px;font-size:38px;line-height:1.3;${i === 3 ? 'border-bottom:none' : ''}"><span>${r[0]}</span><div class="tog ${r[1] ? 'on' : ''}"></div></div>`).join('')}</div></div>`),
+  S('w', `<div class="in low"><div class="cnt">TWO OR MORE NO'S?</div><div class="h" style="font-size:140px">Your talent<br>pipeline could<br>be <span class="or">leaking.</span></div><div class="sub">Slower hiring. Higher costs. Reactive recruiting.</div></div>`),
+  S('g', `<div class="in"><div class="cnt">THREE FIXES</div><div class="h" style="font-size:120px">Close the gap.</div>
+    <div class="card" style="margin-top:50px;padding:18px 50px">
+    ${[['Audit the reality.', 'Ask your best people why they stay.'], ['Show real stories.', 'Swap stock photos for your managers, buyers and floor staff.'], ['Treat candidates like customers.', 'Clear communication at every stage.']].map((r, i) => `<div class="row-i" style="align-items:flex-start;${i === 2 ? 'border-bottom:none' : ''}"><div class="dot on" style="font-size:34px;font-weight:700;color:#fff">${i + 1}</div><span><span style="font-weight:600">${r[0]}</span><br><span style="font-size:36px;font-weight:300;color:#6E6E73">${r[1]}</span></span></div>`).join('')}</div></div>`),
+  S('o', `<div class="in c low"><div class="kick">Need a hand?</div><div class="h">Make hiring<br>your edge.</div><div class="sub">Talk to our specialist retail recruitment team.</div><div class="pill">Link in bio</div></div>`, logo(1)),
+],
+};
+const id = (location.hash || '#cv').slice(1);
+window.SLIDES = SETS[id].length;
+document.querySelector('.row').innerHTML = SETS[id].join('');
+document.body.style.width = (window.SLIDES * 1080) + 'px';
+window.render = function () {};
+</script></body></html>

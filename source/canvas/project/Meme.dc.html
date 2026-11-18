@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>First in my bloodline posts</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;src:url(/_blob/faf3f69bf3ab73e90b25a6d2e02a39cd) format('woff2')}
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1620px; height: 675px; display: flex; font-family: 'Poppins', Arial, sans-serif">
+<sc-for list="{{posts}}" as="p" hint-placeholder-count="3">
+<div style="width: 540px; height: 675px; position: relative; overflow: hidden; background: {{p.bg}}; border-right: 1px dashed #E5E5EA; box-sizing: border-box">
+<div aria-hidden="true" style="position: absolute; left: 150px; top: 440px; width: 240px; height: 240px; border-radius: 999px; background: {{p.sun}}"></div>
+<div aria-hidden="true" style="position: absolute; left: 0; top: 560px; width: 540px; height: 115px; background: {{p.bg}}; border-top: 2px solid {{p.sun}}"></div>
+<svg role="img" aria-label="{{p.label}}" width="540" height="675" viewBox="0 0 540 675" style="position: absolute; left: 0; top: 0">
+<defs>
+<path id="{{p.id}}1" d="M20,180 Q145,150 270,180 T520,180"></path>
+<path id="{{p.id}}2" d="M20,240 Q145,270 270,240 T520,240"></path>
+<path id="{{p.id}}3" d="M20,300 Q145,270 270,300 T520,300"></path>
+<path id="{{p.id}}4" d="M20,360 Q145,390 270,360 T520,360"></path>
+<path id="{{p.id}}5" d="M20,420 Q145,390 270,420 T520,420"></path>
+</defs>
+<g font-family="Poppins, Arial, sans-serif" font-weight="600" font-size="44" text-anchor="middle" letter-spacing="-2" fill="{{p.fg}}">
+<text><textPath href="{{p.h1}}" startOffset="50%">{{p.l1}}</textPath></text>
+<text><textPath href="{{p.h2}}" startOffset="50%">{{p.l2}}</textPath></text>
+<text><textPath href="{{p.h3}}" startOffset="50%">{{p.l3}}</textPath></text>
+<text><textPath href="{{p.h4}}" startOffset="50%">{{p.l4}}</textPath></text>
+<text><textPath href="{{p.h5}}" startOffset="50%">{{p.l5}}</textPath></text>
+</g>
+</svg>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1620,"height":675}}'>
+class Component extends DCLogic {
+renderVals() {
+var data = [
+['ma', ['First in my', 'bloodline to', 'survive a', 'Boxing Day', 'stocktake']],
+['mb', ['First in my', 'bloodline to hire', '3 store managers', 'before', 'Black Friday']],
+['mc', ['First in my', 'bloodline to say', 'no to a', 'Christmas', 'casual shift']]
+];
+return { posts: data.map(function (d) {
+var id = d[0], l = d[1];
+var o = id === 'mb';
+return { bg: o ? '#F27C10' : '#FFFFFF', fg: o ? '#FFFFFF' : '#1D1D1F', sun: o ? '#FFFFFF' : '#F27C10', logo: o ? '/_blob/cf3136879b228d16e56fbb0a06d0b5df' : '/_blob/224e3061193210f17b6c1f6a26e0892e', id: id, label: l.join(' '), l1: l[0], l2: l[1], l3: l[2], l4: l[3], l5: l[4],
+h1: '#' + id + '1', h2: '#' + id + '2', h3: '#' + id + '3', h4: '#' + id + '4', h5: '#' + id + '5' };
+}) };
+}
+}
+</script>
+</body>
+</html>

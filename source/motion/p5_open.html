@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="post.css">
+<style>
+.m80{font-size:84px;font-weight:500;letter-spacing:-0.01em;line-height:1.05}
+.b120{font-size:124px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+</style></head><body>
+<section class="sc white" id="s" style="display:block">
+  <div class="t" style="top:200px"><span class="ln m80">Open for</span><span class="ln b120 or">applications.</span></div>
+  <svg width="1080" height="1350" style="position:absolute;left:0;top:0;z-index:4" font-family="Poppins">
+    <rect x="160" y="1150" width="760" height="20" rx="10" fill="#F5F5F7"/>
+    <rect x="180" y="610" width="720" height="545" rx="8" fill="#F5F5F7"/>
+    <rect x="160" y="565" width="760" height="56" rx="14" fill="#1D1D1F"/>
+    <text x="540" y="603" text-anchor="middle" font-size="30" font-weight="600" fill="#fff" letter-spacing="8">RETAILWORLD</text>
+    <g id="awn"></g>
+    <rect x="230" y="760" width="380" height="290" rx="18" fill="#fff"/>
+    <text x="420" y="880" text-anchor="middle" font-size="46" font-weight="700" fill="#F27C10">NOW</text>
+    <text x="420" y="938" text-anchor="middle" font-size="46" font-weight="700" fill="#F27C10">HIRING</text>
+    <g id="wsp"><path d="M0,-22 C3,-4 4,-3 22,0 C4,3 3,4 0,22 C-3,4 -4,3 -22,0 C-4,-3 -3,-4 0,-22 Z" fill="#F27C10"/></g>
+    <rect x="660" y="760" width="190" height="395" rx="14" fill="#F27C10"/>
+    <circle cx="825" cy="960" r="12" fill="#fff"/>
+    <g id="sign"><line x1="755" y1="790" x2="715" y2="850" stroke="#fff" stroke-width="4"/><line x1="755" y1="790" x2="795" y2="850" stroke="#fff" stroke-width="4"/><circle cx="755" cy="790" r="7" fill="#fff"/>
+      <rect x="685" y="850" width="140" height="64" rx="16" fill="#fff"/><text x="755" y="893" text-anchor="middle" font-size="32" font-weight="700" fill="#1D1D1F">OPEN</text></g>
+  </svg>
+  <div class="t lbl" style="top:1200px;font-size:38px">Retail roles across AU and NZ. Walk right in.</div>
+</section>
+<script src="lib.js"></script><script src="post.js"></script>
+<script>
+window.DURATION = 8;
+function setup() {
+  
+}
+function render(t) {
+  moveLoop($('#s'), t);
+  let g = ''; const n = 8, w = 760 / n;
+  for (let i = 0; i < n; i++) {
+    const x = 160 + i * w, c = i % 2 ? '#fff' : '#F27C10', dy = 6 * osc(t, 2, i * .7);
+    const sk = i % 2 ? ' stroke="#F27C10" stroke-width="4"' : '';
+    g += `<circle cx="${x + w / 2}" cy="${700 + dy}" r="${w / 2 - 2}" fill="${c}"${sk}/><rect x="${x}" y="620" width="${w}" height="${80 + dy}" fill="${c}"${i % 2 ? ' stroke="#F27C10" stroke-width="4"' : ''}/><rect x="${x + 2}" y="${690 + dy}" width="${w - 4}" height="14" fill="${c}"/>`;
+  }
+  g += `<rect x="160" y="620" width="760" height="80" fill="none" stroke="#F27C10" stroke-width="0"/>`;
+  $('#awn').innerHTML = g;
+  $('#sign').setAttribute('transform', `rotate(${10 * osc(t, 2)}, 755, 790)`);
+  const k = .4 + .6 * Math.abs(osc(t, 2, .5));
+  $('#wsp').setAttribute('transform', `translate(560,805) scale(${k}) rotate(${45 * osc(t, 1)})`);
+}
+</script></body></html>

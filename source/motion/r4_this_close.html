@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css">
+<style>
+.l80{font-size:80px;font-weight:300}
+.b210{font-size:210px;font-weight:700;letter-spacing:-0.03em;line-height:1}
+.b190{font-size:190px;font-weight:700;letter-spacing:-0.025em;line-height:1}
+#grp{position:absolute;inset:0;transform-origin:540px 1250px;z-index:5}
+.fing{position:absolute;height:84px;border-radius:42px;background:#F27C10;transform-origin:100% 50%}
+</style></head><body>
+<section class="sc white" id="s1"><img class="logo" src="a/logo.png">
+  <div id="grp">
+    <div class="t" style="top:470px" id="t1a" data-text="[l80]You're"></div>
+    <div class="t" style="top:570px" id="t1" data-text="[b210]this|[b210 or]close."></div>
+    <div id="hand" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
+      <div style="position:absolute;left:830px;top:1150px;width:400px;height:200px;border-radius:100px;background:#E5E5EA"></div>
+      <div class="fing" id="fi" style="left:560px;top:1150px;width:300px"></div>
+      <div class="fing" id="ft" style="left:580px;top:1266px;width:280px;background:#F58A28"></div>
+      <div style="position:absolute;left:760px;top:1130px;width:200px;height:240px;border-radius:100px;background:#F27C10"></div>
+    </div>
+  </div>
+  <div class="t lbl" style="top:1560px;font-size:46px;z-index:6" id="t1b" data-text="to your first..."></div>
+</section>
+<section class="sc orange" id="s2"><img class="logo" src="a/logo_white.png">
+  <div class="t" style="top:430px" id="t2a" data-text="[l80]your first"></div>
+  <div class="t" style="top:540px" id="t2" data-text="[b190]Area|[b190]Manager|[b190]role."></div>
+  <div class="t lbl" style="top:1190px" id="t2b" data-text="Multi-site roles across AU and NZ."></div>
+  <div class="pill" id="cta" style="top:1380px">Comment AREA</div>
+</section>
+<script>window.NO_CIRCLES = true;</script>
+<script src="lib.js"></script>
+<script>
+window.DURATION = 10;
+function setup() {
+  circles($('#s1'), [[900,330,260,'#F27C10',.55,60,0],[130,1650,480,'#F5F5F7',.35,80,1],[150,380,110,'ring:#F27C10',1,40,3],[950,1760,140,'ring:#1D1D1F',.8,40,2]]);
+  circles($('#s2'), [[900,380,380,'ring:#FFFFFF',.5,60,0],[140,1580,600,'#F58A28',.35,70,1],[960,1640,150,'#FFFFFF',.9,40,2],[120,330,90,'#FFFFFF',1.1,40,3]]);
+}
+function render(t) {
+  $$('.sc').forEach(s => moveCircles(s, t));
+  if (scene($('#s1'), t, 0, 5.4)) {
+    words($('#t1a'), t, .2);
+    words($('#t1'), t, .45, { type: 'pop', st: .14 });
+    const hin = E.o5(P(t, 1.1, .9));
+    $('#hand').style.transform = `translateX(${(1 - hin) * 700}px)`;
+    const c = E.io(P(t, 1.9, 1.2)), a = 16 - 13 * c;
+    $('#fi').style.transform = `rotate(${a}deg)`; $('#ft').style.transform = `rotate(${-a}deg)`;
+    const z = E.io(P(t, 3.1, 2.1));
+    $('#grp').style.transform = `scale(${1 + z * 14})`;
+    words($('#t1b'), t, 2.6, { type: 'blur', st: .06, out: 4.2 });
+  }
+  if (scene($('#s2'), t, 4.6, 10, { x: 540, y: 1250, d: .6 })) {
+    words($('#t2a'), t, 5.0, { st: .06 });
+    words($('#t2'), t, 5.2, { type: 'drop', st: .14, d: .9 });
+    words($('#t2b'), t, 6.6, { type: 'blur', st: .04 });
+    pop($('#cta'), t, 7.3, { base: 'translateX(-50%)' });
+  }
+}
+</script></body></html>

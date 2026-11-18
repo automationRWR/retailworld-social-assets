@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="lib.css"><link rel="stylesheet" href="post.css">
+<style>
+.m90{font-size:92px;font-weight:500;letter-spacing:-0.01em;line-height:1.08}
+.b250{font-size:250px;font-weight:700;letter-spacing:-0.03em;line-height:1}
+</style></head><body>
+<section class="sc orange" id="s" style="display:block">
+  <div class="t lbl" style="top:300px;font-size:42px">Heads up.</div>
+  <div class="t" style="top:390px" id="h1"><span class="ln m90">The next big</span><span class="ln m90">thing in retail</span></div>
+  <div class="t" style="top:600px" id="you"><span class="ln b250">is you.</span></div>
+  <div class="t lbl" style="top:1130px;font-size:38px">Retail careers across AU and NZ.</div>
+</section>
+<script src="lib.js"></script><script src="post.js"></script>
+<script>
+window.DURATION = 8;
+function setup() {
+  loopCircles($('#s'), [[900,240,300,'ring:#FFFFFF',50,1,1,0],[140,1180,420,'#F58A28',60,1,2,1],[960,1150,130,'#FFFFFF',40,2,1,2],[150,300,90,'#FFFFFF',40,1,2,3],[930,1010,60,'ring:#FFFFFF',30,2,3,1],[150,1010,40,'#FFFFFF',25,3,2,2]]);
+}
+function render(t) {
+  moveLoop($('#s'), t);
+  $('#you').style.transform = `scale(${1 + .025 * osc(t, 2)}) rotate(${.8 * osc(t, 1, 1)}deg)`;
+}
+</script></body></html>
