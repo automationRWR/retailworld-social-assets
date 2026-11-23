@@ -1,6 +1,8 @@
 <!-- rwig interview guide (Retailworld) start -->
 <div id="rwig" data-brand="rw">
 <style>
+.dmRespRow:has(#rwig){padding:0!important;margin:0!important;max-width:none!important}
+.dmRespColsWrapper:has(#rwig),.dmRespCol:has(#rwig),.dmCustomHtml:has(#rwig){max-width:none!important;width:100%!important;padding:0!important;margin:0!important}
 #rwig{--c:#F27C10;--d:#9a4a00;--t:#FEF0E2;font-family:'Poppins',Arial,sans-serif!important;color:#222;background:#fff;text-align:left;overflow-anchor:none;-webkit-font-smoothing:antialiased}
 #rwig *,#rwig *::before,#rwig *::after{box-sizing:border-box;font-family:'Poppins',Arial,sans-serif!important}
 #rwig h1,#rwig h2,#rwig h3,#rwig p,#rwig ul,#rwig li,#rwig figure{margin:0;padding:0;text-align:left;letter-spacing:normal;text-transform:none}
@@ -187,7 +189,8 @@
 <script>
 (function(){
  var root=document.getElementById('rwig'); if(!root||root.__rwig) return; root.__rwig=1;
- function hdr(){var h=document.querySelector('#hamburger-header-container'); if(h&&h.offsetHeight&&getComputedStyle(h).position==='fixed') return h.offsetHeight+16; var f=document.querySelector('.dmHeader.fixedPart, #hcontainer.fixed'); return (f&&f.offsetHeight?f.offsetHeight:90)+16;}
+ function hdr(){var c=['#hamburger-header-container','.dmHeaderContainer.fHeader','.dmHeaderContainer']; for(var i=0;i<c.length;i++){var h=document.querySelector(c[i]); if(h&&h.offsetHeight&&getComputedStyle(h).position==='fixed') return h.offsetHeight+16;} return 96;}
+ (function full(){var r=root.closest('.dmRespRow'); if(r){r.style.setProperty('padding','0','important'); r.style.setProperty('max-width','none','important');} var w=root.closest('.dmRespColsWrapper'); if(w){w.style.setProperty('max-width','none','important'); w.style.setProperty('width','100%','important');} var c=root.closest('.dmRespCol'); if(c){c.style.setProperty('padding','0','important'); c.style.setProperty('width','100%','important');}})();
  root.addEventListener('click',function(ev){
   var a=ev.target.closest('a[href^="#rwig-"]');
   if(a){var t=document.getElementById(a.getAttribute('href').slice(1)); if(t){ev.preventDefault(); var y=t.getBoundingClientRect().top+window.pageYOffset-hdr(); window.scrollTo({top:y,behavior:'smooth'});} return;}
