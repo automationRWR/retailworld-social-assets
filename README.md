@@ -1,5 +1,7 @@
 # Retailworld social assets
 
+> **Brand guidelines:** see [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md) (refreshed Nov 2026 from the live websites). The same file sits in all four brand social-assets repos and in Notion (RWR Group Brand Memory).
+
 Public asset store for Retailworld Resourcing's Instagram refresh (October 2026). Buffer and Notion both pull media straight from the raw URLs in this repo, so files here should not be renamed, moved or deleted while posts that use them are scheduled.
 
 Raw URL pattern: `https://raw.githubusercontent.com/automationRWR/retailworld-social-assets/main/<path>`
